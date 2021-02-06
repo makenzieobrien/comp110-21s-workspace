@@ -18,3 +18,24 @@ from datetime import timedelta
 
 
 # Begin your solution here...
+population = int(input("Population:"))
+doses_administered = int(input("Doses Administered:"))
+doses_per_day = int(input("Doses Per Day:"))
+target_percent_vacc = int(input("Target % Vaccinated:"))
+
+
+# Calculate how many doses you need, considering you need 2 per person
+num_doses = population * (target_percent_vacc / 100) * 2
+still_needed = num_doses - doses_administered
+days_passed = still_needed / doses_per_day
+
+# To find days passed, use timedelta()
+done_date = datetime.today() + timedelta(days_passed)
+# Convert this day into a string!
+printable_done_date = done_date.strftime("%B %d, %Y")
+
+# Combine it all into a final print statement
+target_vacc_string = str(target_percent_vacc) + "%"
+
+print("We will reach " + target_vacc_string + " vaccination in " + str(int(days_passed)) + 
+" days, which falls on " + printable_done_date + ".")
